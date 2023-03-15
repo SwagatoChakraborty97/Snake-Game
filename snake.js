@@ -23,10 +23,14 @@ var speedY = 0;
 // Gameover
 var gameover = false;
 
+// Score
+var game_score = 0;
+
 // window.onload is the template function kind of init which needs not to be called explicitly
 window.onload = function () {
     // To get element by id
     board = document.getElementById("board");
+    UpdateScore = document.getElementById("score");
     // Set Board height
     board.height = rows * cellsize;
     // Set Board width
@@ -57,6 +61,11 @@ function update() {
     // Eat Food
     if (headX == foodX && headY == foodY) {
         snakebody.push([foodX, foodY])  // store coordinate
+        // Update Game Score
+        game_score += 1
+        // Updated Text must be within backquotes
+        UpdateScore.innerText = `Score : ${game_score}`;    
+        console.log(game_score)
         placefoodRandomPos();
     }
 
@@ -74,7 +83,7 @@ function update() {
     headY += speedY * cellsize;
     // Fill the snake with the color decided
     pen.fillRect(headX, headY, cellsize, cellsize);
-    console.log(headX,headY,snakebody,foodX,foodY)
+    // console.log(headX,headY,snakebody,foodX,foodY)
     // Inc Length of Snake by filling prev coordinate
     for (let i = 0; i < snakebody.length; i += 1) {
         pen.fillRect(snakebody[i][0], snakebody[i][1], cellsize, cellsize);

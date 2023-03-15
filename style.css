@@ -1,5 +1,12 @@
-/* css */
-body{
+body {
     font-family: monospace;
     text-align: center;
+    background-color: rgb(15, 15, 15);
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 537px;
 }
